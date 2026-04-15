@@ -1,11 +1,12 @@
 package net.minecraft.entity.witherskulls;
 
 import net.minecraft.block.Block;
-import net.minecraft.entity.DataWatcher;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityWitherSkull;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.BlockPos;
@@ -13,6 +14,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.EnumDifficulty;
 import net.minecraft.world.World;
+
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -50,17 +52,17 @@ public class EntityIceSkull
           {
             boolean flag = true;
             if ((this.shootingEntity != null) && ((this.shootingEntity instanceof EntityLiving))) {
-              flag = this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing");
+              flag = this.worldObj.getGameRules().getBoolean("mobGriefing");
             }
             if (flag)
             {
               BlockPos blockpos = new BlockPos(movingObject.entityHit.posX, movingObject.entityHit.posY + movingObject.entityHit.getEyeHeight(), movingObject.entityHit.posZ);
               Block block = this.worldObj.getBlockState(new BlockPos(blockpos)).getBlock();
-              if (block.getBlockHardness(worldObj, blockpos) != -1F && !block.isOpaqueCube() && block != Blocks.ice && block != Blocks.packed_ice) {
+              if (block.getBlockHardness(worldObj, blockpos) != -1F && !block.isOpaqueCube() && block != Blocks.ICE && block != Blocks.PACKED_ICE) {
                 if (this.rand.nextInt(20) == 0) {
-                  this.worldObj.setBlockState(blockpos, Blocks.packed_ice.getDefaultState());
+                  this.worldObj.setBlockState(blockpos, Blocks.PACKED_ICE.getDefaultState());
                 } else {
-                  this.worldObj.setBlockState(blockpos, Blocks.ice.getDefaultState());
+                  this.worldObj.setBlockState(blockpos, Blocks.ICE.getDefaultState());
                 }
               }
             }
@@ -68,7 +70,7 @@ public class EntityIceSkull
             if (!movingObject.entityHit.isEntityAlive()) {
               this.shootingEntity.heal(5.0F);
             } else {
-              func_174815_a(this.shootingEntity, movingObject.entityHit);
+              applyEnchantments(this.shootingEntity, movingObject.entityHit);
             }
           }
         }
@@ -84,7 +86,7 @@ public class EntityIceSkull
             b0 = 40;
           }
           if (b0 > 0) {
-            ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(Potion.wither.id, 20 * b0, 1));
+            ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(MobEffects.WITHER, 20 * b0, 1));
           }
         }
       }
@@ -92,23 +94,22 @@ public class EntityIceSkull
       {
         boolean flag = true;
         if ((this.shootingEntity != null) && ((this.shootingEntity instanceof EntityLiving))) {
-          flag = this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing");
+          flag = this.worldObj.getGameRules().getBoolean("mobGriefing");
         }
         if (flag)
         {
           BlockPos blockpos = movingObject.getBlockPos().offset(movingObject.sideHit);
           Block block = this.worldObj.getBlockState(new BlockPos(blockpos)).getBlock();
-          if (block.getBlockHardness(worldObj, blockpos) != -1F && !block.isOpaqueCube() && block != Blocks.ice && block != Blocks.packed_ice) {
+          if (block.getBlockHardness(worldObj, blockpos) != -1F && !block.isOpaqueCube() && block != Blocks.ICE && block != Blocks.PACKED_ICE) {
             if (this.rand.nextInt(20) == 0) {
-              this.worldObj.setBlockState(blockpos, Blocks.packed_ice.getDefaultState());
+              this.worldObj.setBlockState(blockpos, Blocks.PACKED_ICE.getDefaultState());
             } else {
-              this.worldObj.setBlockState(blockpos, Blocks.ice.getDefaultState());
+              this.worldObj.setBlockState(blockpos, Blocks.ICE.getDefaultState());
             }
           }
         }
       }
-      this.worldObj.playSoundEffect(this.posX, this.posY, this.posZ, "random.explode", 4.0F, (1.0F + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.2F) * 0.7F);
-      
+      this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 4.0F, (1.0F + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.2F) * 0.7F);
       setDead();
     }
   }

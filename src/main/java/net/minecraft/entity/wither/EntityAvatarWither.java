@@ -535,10 +535,10 @@ private int deathTicks;
                 if ((!block.isAir(this.worldObj, new BlockPos(j2, k, l))) && (canEntityDestroy(block, this.worldObj, new BlockPos(j2, k, l), this)))
                 {
                   boolean should = true;
-                  if ((block.getMaterial() == Material.ground) || (block.getMaterial() == Material.grass) || (block == Blocks.gravel) || (block == Blocks.netherrack)) {
+                  if ((block.getMaterial() == Material.GROUND) || (block.getMaterial() == Material.GRASS) || (block == Blocks.gravel) || (block == Blocks.netherrack)) {
                     should = false;
                   }
-                  if ((block == Blocks.stone) || (block == Blocks.cobblestone)) {
+                  if ((block == Blocks.STONE) || (block == Blocks.COBBLESTONE)) {
                     should = this.rand.nextInt(20) == 0;
                   }
                   this.worldObj.playAuxSFXAtEntity((EntityPlayer)null, 1012, new BlockPos(this), 0);
@@ -560,7 +560,7 @@ private int deathTicks;
   
   public boolean canEntityDestroy(Block block, IBlockAccess world, BlockPos pos, Entity entity)
   {
-    return (block != Blocks.barrier) && (block != Blocks.bedrock) && (block != Blocks.end_portal) && (block != Blocks.end_portal_frame) && (block != Blocks.command_block);
+    return (block != Blocks.BARRIER) && (block != Blocks.BEDROCK) && (block != Blocks.END_PORTAL) && (block != Blocks.END_PORTAL_FRAME) && (block != Blocks.COMMAND_BLOCK);
   }
   
   public void func_82206_m()
@@ -648,8 +648,8 @@ private int deathTicks;
         i -= j;
         this.worldObj.spawnEntityInWorld(new EntityXPOrb(this.worldObj, this.posX, this.posY + 8.0D, this.posZ, j));
       }
-      this.entityDropItem(new ItemStack(Blocks.dragon_egg, 1), 12F);
-      this.entityDropItem(new ItemStack(Blocks.beacon, 1), 12F);
+      this.entityDropItem(new ItemStack(Blocks.DRAGON_EGG, 1), 12F);
+      this.entityDropItem(new ItemStack(Blocks.BEACON, 1), 12F);
       Item it = null;
       Block bl = null;
       Iterator ilist = Item.itemRegistry.iterator();
@@ -899,7 +899,7 @@ private int deathTicks;
   
   protected void dropFewItems(boolean p_70628_1_, int p_70628_2_)
   {
-    EntityItem entityitem = dropItem(Items.nether_star, 64);
+    EntityItem entityitem = dropItem(Items.NETHER_STAR, 64);
     if (entityitem != null) {
       entityitem.setNoDespawn();
     }
@@ -909,7 +909,7 @@ private int deathTicks;
       while (iterator.hasNext())
       {
         EntityPlayer entityplayer = (EntityPlayer)iterator.next();
-        entityplayer.triggerAchievement(AchievementList.killWither);
+        entityplayer.triggerAchievement(AchievementList.KILL_WITHER);
       }
     }
   }
@@ -937,9 +937,9 @@ private int deathTicks;
   protected void applyEntityAttributes()
   {
     super.applyEntityAttributes();
-    getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(250000.0D);
-    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.75D);
-    getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(100.0D);
+    getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(250000.0D);
+    getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.75D);
+    getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(100.0D);
   }
   
   @SideOnly(Side.CLIENT)

@@ -93,7 +93,7 @@ public class EntityLightningShot extends Entity
     {
     	if (!this.worldObj.isRemote)
     	{
-    		this.worldObj.addWeatherEffect(new EntityLightningBolt(this.worldObj, this.posX, this.posY, this.posZ));
+    		this.worldObj.addWeatherEffect(new EntityLightningBolt(this.worldObj, this.posX, this.posY, this.posZ,false));
     	}
     	
     	if (this.shootingEntity == null || (this.shootingEntity != null && this.getDistanceSqToEntity(this.shootingEntity) > 14400D))
@@ -107,14 +107,14 @@ public class EntityLightningShot extends Entity
     	        {
     	        	if (entity1 instanceof EntityCreeper)
     	        		((EntityCreeper)entity1).func_146079_cb();
-    	        	this.worldObj.addWeatherEffect(new EntityLightningBolt(this.worldObj, entity1.posX, entity1.posY, entity1.posZ));
+    	        	this.worldObj.addWeatherEffect(new EntityLightningBolt(this.worldObj, entity1.posX, entity1.posY, entity1.posZ, false));
     	        	if (this.shootingEntity != null)
     	        		if (entity1 instanceof EntityEnderman)
     	        			entity1.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer)this.shootingEntity), 10F);
     	        		else
     	        			entity1.attackEntityFrom(DamageSource.causeIndirectMagicDamage((EntityPlayer)this.shootingEntity, this), 10F);
     	        	else
-    	        		entity1.attackEntityFrom(DamageSource.setExplosionSource(null), 10F);
+    	        		entity1.attackEntityFrom(DamageSource.causeExplosionDamage(null), 10F);
     	        }
     	      }
     	    }
@@ -271,18 +271,18 @@ public class EntityLightningShot extends Entity
         {
             if (movingObject.entityHit != null)
             {
-            	this.worldObj.addWeatherEffect(new EntityLightningBolt(this.worldObj, movingObject.entityHit.posX, movingObject.entityHit.posY, movingObject.entityHit.posZ));
+            	this.worldObj.addWeatherEffect(new EntityLightningBolt(this.worldObj, movingObject.entityHit.posX, movingObject.entityHit.posY, movingObject.entityHit.posZ, false));
                 if (this.shootingEntity != null)
                 {
                 	if (movingObject.entityHit instanceof EntityEnderman)
                 	{
                 		movingObject.entityHit.attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer)this.shootingEntity), 12.0F);
-                		this.func_174815_a(this.shootingEntity, movingObject.entityHit);
+                		this.applyEnchantments(this.shootingEntity, movingObject.entityHit);
                 	}
                 	else
                 	{
                 		movingObject.entityHit.attackEntityFrom(DamageSource.causeIndirectMagicDamage((EntityPlayer)this.shootingEntity, this), 12.0F);
-                		this.func_174815_a(this.shootingEntity, movingObject.entityHit);
+                		this.applyEnchantments(this.shootingEntity, movingObject.entityHit);
                 	}
                 }
                 else
@@ -300,11 +300,11 @@ public class EntityLightningShot extends Entity
     	        {
     	        	if (entity1 instanceof EntityCreeper)
     	        		((EntityCreeper)entity1).func_146079_cb();
-    	        	this.worldObj.addWeatherEffect(new EntityLightningBolt(this.worldObj, entity1.posX, entity1.posY, entity1.posZ));
+    	        	this.worldObj.addWeatherEffect(new EntityLightningBolt(this.worldObj, entity1.posX, entity1.posY, entity1.posZ, false));
     	        	if (this.shootingEntity != null)
     	        		entity1.attackEntityFrom(DamageSource.causeIndirectMagicDamage((EntityPlayer)this.shootingEntity, this), 8F);
     	        	else
-    	        		entity1.attackEntityFrom(DamageSource.setExplosionSource(null), 8F);
+    	        		entity1.attackEntityFrom(DamageSource.causeExplosionDamage(null), 8F);
     	        }
     	      }
     	    }
@@ -352,9 +352,9 @@ public class EntityLightningShot extends Entity
         if (tagCompund.hasKey("direction", 9))
         {
             NBTTagList nbttaglist = tagCompund.getTagList("direction", 6);
-            this.motionX = nbttaglist.getDouble(0);
-            this.motionY = nbttaglist.getDouble(1);
-            this.motionZ = nbttaglist.getDouble(2);
+            this.motionX = nbttaglist.getDoubleAt(0);
+            this.motionY = nbttaglist.getDoubleAt(1);
+            this.motionZ = nbttaglist.getDoubleAt(2);
         }
         else
         {

@@ -83,7 +83,7 @@ public class EntityWitherDragonProjectile
   {
       float f = super.getExplosionResistance(p_180428_1_, worldIn, p_180428_3_, p_180428_4_);
 
-      if (this.isInvulnerable() && p_180428_4_.getBlock() != Blocks.bedrock && p_180428_4_.getBlock() != Blocks.end_portal && p_180428_4_.getBlock() != Blocks.end_portal_frame && p_180428_4_.getBlock() != Blocks.command_block)
+      if (this.isInvulnerable() && p_180428_4_.getBlock() != Blocks.BEDROCK && p_180428_4_.getBlock() != Blocks.END_PORTAL_FRAME && p_180428_4_.getBlock() != Blocks.END_PORTAL && p_180428_4_.getBlock() != Blocks.COMMAND_BLOCK)
       {
           f = Math.min(0.8F, f);
       }

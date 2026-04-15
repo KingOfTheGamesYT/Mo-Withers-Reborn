@@ -1,13 +1,17 @@
 package net.minecraft.entity.witherskulls;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.INpc;
+import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.boss.IBossDisplayData;
 import net.minecraft.entity.passive.IAnimals;
 import net.minecraft.entity.projectile.EntityWitherSkull;
 import net.minecraft.entity.wither.EntityAvatarWither;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.BlockPos;
@@ -49,15 +53,14 @@ public class EntityWitherSkullAvatar
   public float getExplosionResistance(Explosion p_180428_1_, World worldIn, BlockPos p_180428_3_, IBlockState p_180428_4_)
   {
       float f = super.getExplosionResistance(p_180428_1_, worldIn, p_180428_3_, p_180428_4_);
-
-      if (!p_180428_4_.getBlock().getMaterial().isLiquid() && p_180428_4_.getBlock() != Blocks.bedrock && p_180428_4_.getBlock() != Blocks.end_portal && p_180428_4_.getBlock() != Blocks.end_portal_frame && p_180428_4_.getBlock() != Blocks.command_block)
-      {
-          f = Math.min(0.1F, f);
+      Block lvt_6_1_ = p_180428_4_.getBlock();
+      if (this.isInvulnerable() && EntityWither.canDestroyBlock(lvt_6_1_)) {
+          f = Math.min(0.8F, f);
       }
 
       return f;
   }
-  
+
   protected void onImpact(RayTraceResult movingObject)
   {
     if (!this.worldObj.isRemote)
@@ -84,7 +87,7 @@ public class EntityWitherSkullAvatar
                     else
                     {
                       movingObject.entityHit.hurtResistantTime = 0;
-                      func_174815_a(this.shootingEntity, movingObject.entityHit);
+                      applyEnchantments(this.shootingEntity, movingObject.entityHit);
                     }
                   }
             }
@@ -100,7 +103,7 @@ public class EntityWitherSkullAvatar
                     else
                     {
                       movingObject.entityHit.hurtResistantTime = 0;
-                      func_174815_a(this.shootingEntity, movingObject.entityHit);
+                      applyEnchantments(this.shootingEntity, movingObject.entityHit);
                     }
                   }
             }
@@ -118,14 +121,14 @@ public class EntityWitherSkullAvatar
             b0 = 80;
           }
           if (b0 > 0) {
-            ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(Potion.wither.id, 20 * b0, 3));
-            ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(Potion.poison.id, 20 * b0, 3));
-            ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(Potion.confusion.id, 20 * b0, 3));
-            ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, 20 * b0, 9));
-            ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 20 * b0, 9));
-            ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(Potion.blindness.id, 20 * b0, 3));
-            ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(Potion.hunger.id, 20 * b0, 99));
-            ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(Potion.weakness.id, 20 * b0, 9));
+            ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(MobEffects.WITHER, 20 * b0, 3));
+            ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(MobEffects.POISON, 20 * b0, 3));
+            ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 20 * b0, 3));
+            ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 20 * b0, 9));
+            ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 20 * b0, 9));
+            ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(MobEffects.BLINDNESS, 20 * b0, 3));
+            ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(MobEffects.HUNGER, 20 * b0, 99));
+            ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(MobEffects.WEAKNESS, 20 * b0, 9));
           }
         }
       }
@@ -146,7 +149,7 @@ public class EntityWitherSkullAvatar
       
       this.noClip = true;
       if ((this.motionX * this.motionX + this.motionZ * this.motionZ == 0.0D) && (!this.worldObj.isRemote)) {
-    	    this.playSound("random.explode", 3.0F, 0.6F);
+          this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 3.0F, 0.6F);
         setDead();
       }
       if (this.shootingEntity == null || (this.shootingEntity != null && this.getDistanceSqToEntity(this.shootingEntity) > 14400D)) {

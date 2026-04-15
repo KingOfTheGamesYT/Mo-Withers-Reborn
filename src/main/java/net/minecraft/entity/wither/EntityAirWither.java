@@ -158,8 +158,8 @@ public class EntityAirWither
   
   public boolean interact(EntityPlayer player)
   {
-    ItemStack itemstack = player.getCurrentEquippedItem();
-    if ((itemstack != null) && (itemstack.getItem() == Items.diamond_sword))
+    ItemStack itemstack = player.getHeldItemMainhand();
+    if ((itemstack != null) && (itemstack.getItem() == Items.DIAMOND_SWORD))
     {
       this.worldObj.playBroadcastSound(1013, new BlockPos(this), 0);
       
@@ -564,7 +564,7 @@ public class EntityAirWither
   
   public boolean canEntityDestroy(Block block, IBlockAccess world, BlockPos pos, Entity entity)
   {
-    return (block != Blocks.barrier) && (block != Blocks.bedrock) && (block != Blocks.end_portal) && (block != Blocks.end_portal_frame) && (block != Blocks.command_block);
+    return (block != Blocks.BARRIER) && (block != Blocks.BEDROCK) && (block != Blocks.END_PORTAL) && (block != Blocks.END_PORTAL_FRAME) && (block != Blocks.COMMAND_BLOCK);
   }
   
   public void func_82206_m()
@@ -682,13 +682,13 @@ public class EntityAirWither
 
       for (int k = 0; k < j + 1 + p_70628_2_; ++k)
       {
-    	  this.dropItem(Items.feather, 1);
+    	  this.dropItem(Items.FEATHER, 1);
       }
       for (int k = 0; k < j + 4 + p_70628_2_; ++k)
       {
-          this.dropItem(Items.paper, 1);
+          this.dropItem(Items.PAPER, 1);
       }
-    EntityItem entityitem = dropItem(Items.nether_star, 1);
+    EntityItem entityitem = dropItem(Items.NETHER_STAR, 1);
     if (entityitem != null) {
       entityitem.setNoDespawn();
     }
@@ -699,7 +699,7 @@ public class EntityAirWither
         while (iterator.hasNext())
         {
             EntityPlayer entityplayer = (EntityPlayer)iterator.next();
-            entityplayer.triggerAchievement(AchievementList.killWither);
+            entityplayer.triggerAchievement(AchievementList.KILL_WITHER);
             entityplayer.triggerAchievement(MoWithersAchievments.achievementKillAirWither);
         }
     }
@@ -728,9 +728,9 @@ public class EntityAirWither
   protected void applyEntityAttributes()
   {
     super.applyEntityAttributes();
-    getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(300.0D);
-    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.75D);
-    getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(64.0D);
+    getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(300.0D);
+    getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.75D);
+    getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(64.0D);
   }
   
   @SideOnly(Side.CLIENT)

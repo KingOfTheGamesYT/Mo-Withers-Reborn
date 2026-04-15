@@ -16,6 +16,7 @@ import net.minecraft.entity.ai.EntityAIHurtByTarget;
 import net.minecraft.entity.ai.EntityMoveHelper;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.init.Items;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -25,7 +26,6 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.StatCollector;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldProviderHell;
@@ -65,8 +65,8 @@ public class EntityLostSkull extends EntityMob
     protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(6.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(32.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(6.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(32.0D);
     }
     
     public String getName()
@@ -115,7 +115,7 @@ public class EntityLostSkull extends EntityMob
             		((EntityLiving)p_70652_1_).setAttackTarget(null);
             	
             	if (this.getSkullType() == 1)
-            		((EntityLivingBase)p_70652_1_).addPotionEffect(new PotionEffect(Potion.wither.id, 80));
+            		((EntityLivingBase)p_70652_1_).addPotionEffect(new PotionEffect(MobEffects.wither, 80));
             }
 
             return true;
@@ -354,7 +354,7 @@ public class EntityLostSkull extends EntityMob
   		  {
   			  if (!this.worldObj.isRemote)
               {
-                  this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, 2F, this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing"));
+                  this.worldObj.createExplosion(this, this.posX, this.posY, this.posZ, 2F, this.worldObj.getGameRules().getBoolean("mobGriefing"));
                   this.setDead();
               }
   		  }
@@ -591,7 +591,7 @@ public class EntityLostSkull extends EntityMob
             {
                 axisalignedbb = axisalignedbb.offset(d4, d5, d6);
 
-                if (!this.field_179927_g.worldObj.getCollidingBoundingBoxes(this.field_179927_g, axisalignedbb).isEmpty())
+                if (!this.field_179927_g.worldObj.getCollisionBoxes(axisalignedbb).isEmpty())
                 {
                     return false;
                 }

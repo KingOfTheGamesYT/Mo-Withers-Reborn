@@ -469,7 +469,7 @@ public class EntityBabyWither
   
   protected void dropFewItems(boolean p_70628_1_, int p_70628_2_)
   {
-    EntityItem entityitem = dropItem(Items.nether_star, 1);
+    EntityItem entityitem = dropItem(Items.NETHER_STAR, 1);
     if (entityitem != null && this.rand.nextInt(10) == 0) {
       entityitem.setNoDespawn();
     }
@@ -479,7 +479,7 @@ public class EntityBabyWither
       while (iterator.hasNext())
       {
         EntityPlayer entityplayer = (EntityPlayer)iterator.next();
-        entityplayer.triggerAchievement(AchievementList.killWither);
+        entityplayer.triggerAchievement(AchievementList.KILL_WITHER);
       }
     }
   }
@@ -509,9 +509,9 @@ public class EntityBabyWither
   protected void applyEntityAttributes()
   {
     super.applyEntityAttributes();
-    getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(50.0D);
-    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.75D);
-    getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(32.0D);
+    getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(50.0D);
+    getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.75D);
+    getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(32.0D);
   }
   
   @SideOnly(Side.CLIENT)

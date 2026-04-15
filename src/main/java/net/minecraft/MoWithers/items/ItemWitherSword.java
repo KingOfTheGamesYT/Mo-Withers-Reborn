@@ -8,6 +8,7 @@ import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityWitherSkull;
 import net.minecraft.entity.witherskulls.EntityItemMoWithers;
+import net.minecraft.init.MobEffects;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -32,7 +33,7 @@ public class ItemWitherSword extends ItemSword
 	{
 	    if (target instanceof EntityLivingBase && attacker instanceof EntityPlayer)
 	    {
-	      target.addPotionEffect(new PotionEffect(Potion.wither.id, 120, 3));
+	      target.addPotionEffect(new PotionEffect(MobEffects.wither, 120, 3));
 	    }
 	    
 	    if (target instanceof EntityWither && attacker instanceof EntityPlayer && !target.isEntityAlive())

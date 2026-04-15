@@ -328,7 +328,7 @@ public class EntityBedrockWither
   
   public boolean canEntityDestroy(Block block, IBlockAccess world, BlockPos pos, Entity entity)
   {
-    return (block != Blocks.barrier) && (block != Blocks.bedrock) && (block != Blocks.end_portal) && (block != Blocks.end_portal_frame) && (block != Blocks.command_block);
+    return (block != Blocks.BARRIER) && (block != Blocks.BEDROCK) && (block != Blocks.END_PORTAL) && (block != Blocks.END_PORTAL_FRAME) && (block != Blocks.COMMAND_BLOCK);
   }
   
   public void func_82206_m()
@@ -476,7 +476,7 @@ public class EntityBedrockWither
   protected void dropFewItems(boolean p_70628_1_, int p_70628_2_)
   {
 	  this.worldObj.newExplosion(this, this.posX, this.posY + getEyeHeight(), this.posZ, 40.0F, false, this.worldObj.getGameRules().getGameRuleBooleanValue("mobGriefing"));
-    EntityItem entityitem = dropItem(Items.nether_star, 64);
+    EntityItem entityitem = dropItem(Items.NETHER_STAR, 64);
     if (entityitem != null) {
       entityitem.setNoDespawn();
     }
@@ -508,9 +508,9 @@ public class EntityBedrockWither
   protected void applyEntityAttributes()
   {
     super.applyEntityAttributes();
-    getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(80000.0D);
-    getEntityAttribute(SharedMonsterAttributes.movementSpeed).setBaseValue(0.2D);
-    getEntityAttribute(SharedMonsterAttributes.followRange).setBaseValue(64.0D);
+    getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(80000.0D);
+    getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.2D);
+    getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(64.0D);
   }
   
   @SideOnly(Side.CLIENT)

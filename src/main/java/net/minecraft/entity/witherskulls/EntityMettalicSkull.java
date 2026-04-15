@@ -166,28 +166,28 @@ public class EntityMettalicSkull
       switch (this.getSkullType())
       {
           case 0:
-        	  entity.dropItem(Items.iron_ingot, 1);
+        	  entity.dropItem(Items.IRON_INGOT, 1);
               return 0;
           case 1:
-        	  entity.dropItem(Items.gold_ingot, 1);
+        	  entity.dropItem(Items.GOLD_INGOT, 1);
               return 1;
           case 2:
-        	  entity.dropItem(Items.diamond, 1);
+        	  entity.dropItem(Items.DIAMOND, 1);
               return 2;
           case 3:
-        	  entity.dropItem(Items.emerald, 1);
+        	  entity.dropItem(Items.EMERALD, 1);
               return 3;
           case 4:
-        	  entity.dropItem(Items.coal, 1);
+        	  entity.dropItem(Items.COAL, 1);
               return 4;
           case 5:
-        	  entity.dropItem(Items.redstone, 1);
+        	  entity.dropItem(Items.REDSTONE, 1);
               return 5;
           case 6:
-        	  entity.entityDropItem(new ItemStack(Items.dye, 1, EnumDyeColor.BLUE.getDyeDamage()), 0.0F);
+        	  entity.entityDropItem(new ItemStack(Items.DYE, 1, EnumDyeColor.BLUE.getDyeDamage()), 0.0F);
               return 6;
           default:
-        	  entity.dropItem(Items.iron_ingot, 1);
+        	  entity.dropItem(Items.IRON_INGOT, 1);
               return 0;
       }
   }
@@ -197,28 +197,28 @@ public class EntityMettalicSkull
       switch (this.getSkullType())
       {
           case 0:
-        	  world.setBlockState(pos, Blocks.iron_block.getDefaultState());
+        	  world.setBlockState(pos, Blocks.IRON_BLOCK.getDefaultState());
               return 0;
           case 1:
-        	  world.setBlockState(pos, Blocks.gold_block.getDefaultState());
+        	  world.setBlockState(pos, Blocks.GOLD_BLOCK.getDefaultState());
               return 1;
           case 2:
-        	  world.setBlockState(pos, Blocks.diamond_block.getDefaultState());
+        	  world.setBlockState(pos, Blocks.DIAMOND_BLOCK.getDefaultState());
               return 2;
           case 3:
-        	  world.setBlockState(pos, Blocks.emerald_block.getDefaultState());
+        	  world.setBlockState(pos, Blocks.EMERALD_BLOCK.getDefaultState());
               return 3;
           case 4:
-        	  world.setBlockState(pos, Blocks.coal_block.getDefaultState());
+        	  world.setBlockState(pos, Blocks.COAL_BLOCK.getDefaultState());
               return 4;
           case 5:
-        	  world.setBlockState(pos, Blocks.redstone_block.getDefaultState());
+        	  world.setBlockState(pos, Blocks.REDSTONE_BLOCK.getDefaultState());
               return 5;
           case 6:
-        	  world.setBlockState(pos, Blocks.lapis_block.getDefaultState());
+        	  world.setBlockState(pos, Blocks.LAPIS_BLOCK.getDefaultState());
               return 6;
           default:
-        	  world.setBlockState(pos, Blocks.iron_block.getDefaultState());
+        	  world.setBlockState(pos, Blocks.IRON_BLOCK.getDefaultState());
               return 0;
       }
   }

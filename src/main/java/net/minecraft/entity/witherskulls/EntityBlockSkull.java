@@ -1,10 +1,11 @@
 package net.minecraft.entity.witherskulls;
 
 import net.minecraft.block.Block;
-import net.minecraft.entity.DataWatcher;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityWitherSkull;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.MobEffects;
+import net.minecraft.init.SoundEvents;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.math.BlockPos;
@@ -15,8 +16,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class EntityBlockSkull
-  extends EntityWitherSkull
+public class EntityBlockSkull extends EntityWitherSkull
 {
   public EntityBlockSkull(World worldIn)
   {
@@ -80,7 +80,7 @@ public class EntityBlockSkull
             if (!movingObject.entityHit.isEntityAlive()) {
               this.shootingEntity.heal(5.0F);
             } else {
-              func_174815_a(this.shootingEntity, movingObject.entityHit);
+              applyEnchantments(this.shootingEntity, movingObject.entityHit);
             }
           }
         }
@@ -96,7 +96,7 @@ public class EntityBlockSkull
             b0 = 40;
           }
           if (b0 > 0) {
-            ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(Potion.poison.id, 20 * b0, 1));
+            ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(MobEffects.POISON, 20 * b0, 1));
           }
         }
       }
@@ -108,9 +108,9 @@ public class EntityBlockSkull
           	  this.setDownBlock(worldObj, blockpos);
           }
       }
-      this.worldObj.playSoundEffect(this.posX, this.posY, this.posZ, "random.explode", 4.0F, (1.0F + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.2F) * 0.7F);
-      
-      setDead();
+        this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 4.0F, (1.0F + (this.worldObj.rand.nextFloat() - this.worldObj.rand.nextFloat()) * 0.2F) * 0.7F);
+
+        setDead();
     }
   }
   
@@ -135,22 +135,22 @@ public class EntityBlockSkull
       switch (this.getSkullType())
       {
           case 0:
-        	  world.setBlockState(pos, Blocks.sand.getDefaultState());
+        	  world.setBlockState(pos, Blocks.SAND.getDefaultState());
               return 0;
           case 1:
-        	  world.setBlockState(pos, Blocks.gravel.getDefaultState());
+        	  world.setBlockState(pos, Blocks.GRAVEL.getDefaultState());
               return 1;
           case 2:
-        	  world.setBlockState(pos, Blocks.glass.getDefaultState());
+        	  world.setBlockState(pos, Blocks.GLASS.getDefaultState());
               return 2;
           case 3:
-        	  world.setBlockState(pos, Blocks.obsidian.getDefaultState());
+        	  world.setBlockState(pos, Blocks.OBSIDIAN.getDefaultState());
               return 3;
           case 4:
-        	  world.setBlockState(pos, Blocks.bedrock.getDefaultState());
+        	  world.setBlockState(pos, Blocks.BEDROCK.getDefaultState());
               return 4;
           default:
-        	  world.setBlockState(pos, Blocks.sand.getDefaultState());
+        	  world.setBlockState(pos, Blocks.SAND.getDefaultState());
               return 0;
       }
   }

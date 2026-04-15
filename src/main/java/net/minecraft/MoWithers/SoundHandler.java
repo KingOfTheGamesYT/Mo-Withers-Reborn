@@ -7,6 +7,6 @@ public class SoundHandler
 {
     public static void onEntityPlay(String name,World world,Entity entityName,float volume ,float pitch)
     {
-        world.playSoundAtEntity(entityName,("mowithers:" + name), (float)volume,(float) pitch);
+        world.playSound(entityName,("mowithers:" + name), (float)volume,(float) pitch);
     }
 }

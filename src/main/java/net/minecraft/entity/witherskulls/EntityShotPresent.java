@@ -32,7 +32,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class EntityShotPresent
   extends EntityWitherSkull
 {
-    private static final List CHESTCONTENTPUZZEL = Lists.newArrayList(new WeightedRandomChestContent[] {new WeightedRandomChestContent(Items.diamond, 0, 2, 4, 10), new WeightedRandomChestContent(Items.iron_ingot, 0, 5, 10, 30), new WeightedRandomChestContent(Items.gold_ingot, 0, 3, 7, 20), new WeightedRandomChestContent(Items.emerald, 0, 1, 3, 5), new WeightedRandomChestContent(Items.cooked_beef, 0, 5, 10, 30), new WeightedRandomChestContent(Items.baked_potato, 0, 8, 8, 10), new WeightedRandomChestContent(Items.golden_apple, 1, 1, 1, 1), new WeightedRandomChestContent(Items.cookie, 0, 16, 24, 50), new WeightedRandomChestContent(Items.cooked_chicken, 0, 8, 16, 20), new WeightedRandomChestContent(Items.name_tag, 0, 1, 1, 10)});
+    private static final List CHESTCONTENTPUZZEL = Lists.newArrayList(new WeightedRandomChestContent[] {new WeightedRandomChestContent(Items.DIAMOND, 0, 2, 4, 10), new WeightedRandomChestContent(Items.IRON_INGOT, 0, 5, 10, 30), new WeightedRandomChestContent(Items.GOLD_INGOT, 0, 3, 7, 20), new WeightedRandomChestContent(Items.EMERALD, 0, 1, 3, 5), new WeightedRandomChestContent(Items.COOKED_BEEF, 0, 5, 10, 30), new WeightedRandomChestContent(Items.BAKED_POTATO, 0, 8, 8, 10), new WeightedRandomChestContent(Items.GOLDEN_APPLE, 1, 1, 1, 1), new WeightedRandomChestContent(Items.COOKIE, 0, 16, 24, 50), new WeightedRandomChestContent(Items.COOKED_CHICKEN, 0, 8, 16, 20), new WeightedRandomChestContent(Items.NAME_TAG, 0, 1, 1, 10)});
 	
   public EntityShotPresent(World worldIn)
   {

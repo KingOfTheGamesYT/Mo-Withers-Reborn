@@ -76,7 +76,7 @@ public class EntityLightningSkull
             b0 = 15;
             for (int l1 = 0; l1 <= 2; l1++)
             {
-              this.playSound(SoundEvents.entity_generic_explode, 2.0F, 0.7F + this.rand.nextFloat() * 0.2F);
+              this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 2.0F, 0.7F + this.rand.nextFloat() * 0.2F);
               movingObject.entityHit.hurtResistantTime = 1;
               this.worldObj.addWeatherEffect(new EntityLightningBolt(this.worldObj, movingObject.entityHit.posX, movingObject.entityHit.posY, movingObject.entityHit.posZ, false));
             }
@@ -86,7 +86,7 @@ public class EntityLightningSkull
             b0 = 40;
             for (int l1 = 0; l1 <= 4; l1++)
             {
-              this.playSound(SoundEvents.entity_generic_explode, 2.0F, 0.7F + this.rand.nextFloat() * 0.2F);
+              this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 2.0F, 0.7F + this.rand.nextFloat() * 0.2F);
               movingObject.entityHit.hurtResistantTime = 1;
               this.worldObj.addWeatherEffect(new EntityLightningBolt(this.worldObj, movingObject.entityHit.posX, movingObject.entityHit.posY, movingObject.entityHit.posZ, false));
             }
@@ -95,16 +95,16 @@ public class EntityLightningSkull
           {
             ((EntityLivingBase)movingObject.entityHit).motionY = (0.75F * this.worldObj.getDifficulty().getDifficultyId());
             
-            ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(MobEffects.digSlowdown, 20 * b0, 0));
-            ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(MobEffects.confusion, 20 * b0, 0));
-            ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(MobEffects.wither, 20 * b0, 1));
+            ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(MobEffects.MINING_FATIGUE, 20 * b0, 0));
+            ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(MobEffects.NAUSEA, 20 * b0, 0));
+            ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(MobEffects.WITHER, 20 * b0, 1));
             if (this.worldObj.getDifficulty() == EnumDifficulty.HARD) {
-              ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(MobEffects.moveSlowdown, 20 * b0, 0));
+              ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(MobEffects.SLOWNESS, 20 * b0, 0));
             }
           }
         }
       }
-      this.playSound(SoundEvents.entity_generic_explode, 2.0F, 0.7F + this.rand.nextFloat() * 0.2F);
+      this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 2.0F, 0.7F + this.rand.nextFloat() * 0.2F);
       if (this.worldObj.getClosestPlayerToEntity(this, 6D) != null)
       {
     	  EntityPlayer player = this.worldObj.getClosestPlayerToEntity(this, 6D);

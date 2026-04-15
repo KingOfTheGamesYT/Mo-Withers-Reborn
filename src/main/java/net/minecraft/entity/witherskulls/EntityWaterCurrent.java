@@ -94,7 +94,7 @@ public class EntityWaterCurrent extends Entity
     {
     	if (!this.worldObj.isRemote)
     	{
-    		this.worldObj.setBlockState(this.getPosition(), Blocks.flowing_water.getDefaultState().withProperty(BlockLiquid.LEVEL, 12), 3);
+    		this.worldObj.setBlockState(this.getPosition(), Blocks.FLOWING_WATER.getDefaultState().withProperty(BlockLiquid.LEVEL, 12), 3);
     	}
     	
     	if (this.shootingEntity == null || (this.shootingEntity != null && this.getDistanceSqToEntity(this.shootingEntity) > 14400D))
@@ -347,9 +347,9 @@ public class EntityWaterCurrent extends Entity
         if (tagCompund.hasKey("direction", 9))
         {
             NBTTagList nbttaglist = tagCompund.getTagList("direction", 6);
-            this.motionX = nbttaglist.getDouble(0);
-            this.motionY = nbttaglist.getDouble(1);
-            this.motionZ = nbttaglist.getDouble(2);
+            this.motionX = nbttaglist.getDoubleAt(0);
+            this.motionY = nbttaglist.getDoubleAt(1);
+            this.motionZ = nbttaglist.getDoubleAt(2);
         }
         else
         {

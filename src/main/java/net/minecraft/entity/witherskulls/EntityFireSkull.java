@@ -71,7 +71,7 @@ public class EntityFireSkull
             b0 = 40;
           }
           if (b0 > 0) {
-            ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(MobEffects.wither, 20 * b0, 1));
+            ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(MobEffects.WITHER, 20 * b0, 1));
           }
         }
       }

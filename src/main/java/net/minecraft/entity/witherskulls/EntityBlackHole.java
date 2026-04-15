@@ -1,12 +1,12 @@
 package net.minecraft.entity.witherskulls;
 
 import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.boss.IBossDisplayData;
 import net.minecraft.entity.item.EntityBoat;
 import net.minecraft.entity.item.EntityFallingBlock;
 import net.minecraft.entity.item.EntityItem;
@@ -34,6 +34,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
+
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
@@ -167,7 +168,7 @@ public class EntityBlackHole extends Entity
         	        		else
         	        			entity1.attackEntityFrom(DamageSource.causeIndirectMagicDamage((EntityPlayer)this.shootingEntity, this), 10000F);
         	        	else
-        	        		entity1.attackEntityFrom(DamageSource.setExplosionSource(null), 10000F);
+        	        		entity1.attackEntityFrom(DamageSource.causeExplosionDamage(null), 10000F);
         	        }
         	      }
         	    }
@@ -222,7 +223,7 @@ public class EntityBlackHole extends Entity
       		  this.playSound("mowithers:BlackHole", Float.MAX_VALUE, 1F);
       		this.playSound("mowithers:Wind", 1F, 0.75F);
       	  }
-      	  
+
           List list111 = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.getEntityBoundingBox().expand(72.0D, 72.0D, 72.0D));
     	    if ((list111 != null) && !this.worldObj.isRemote && (!list111.isEmpty())) {
     	      for (int i111 = 0; i111 < list111.size(); i111++)
@@ -292,7 +293,7 @@ public class EntityBlackHole extends Entity
                   int k = i + j;
                   int l = j1 + i2;
                   Block block = this.worldObj.getBlockState(new BlockPos(j2, k, l)).getBlock();
-                  if ((block.getMaterial() != Material.air && (block.getMaterial().isLiquid() || this.rand.nextInt(10) == 0) && !this.worldObj.isRemote && this.worldObj.isAreaLoaded(this.getPosition().add(-32, -32, -32), this.getPosition().add(32, 32, 32)) && block.getBlockHardness(this.worldObj, new BlockPos(j2, k, l)) != -1))
+                  if ((block.getMaterial() != Material.AIR && (block.getMaterial().isLiquid() || this.rand.nextInt(10) == 0) && !this.worldObj.isRemote && this.worldObj.isAreaLoaded(this.getPosition().add(-32, -32, -32), this.getPosition().add(32, 32, 32)) && block.getBlockHardness(this.worldObj, new BlockPos(j2, k, l)) != -1))
                   {
                   	  if (block.getMaterial().isLiquid())
                   		  this.worldObj.setBlockToAir(new BlockPos(j2, k, l));
@@ -311,7 +312,7 @@ public class EntityBlackHole extends Entity
                     int k = i + j;
                     int l = j1 + i2;
                     Block block = this.worldObj.getBlockState(new BlockPos(j2, k, l)).getBlock();
-                    if ((block.getMaterial() != Material.air && !this.worldObj.isRemote && this.worldObj.isAreaLoaded(this.getPosition().add(-32, -32, -32), this.getPosition().add(32, 32, 32)) && block.getBlockHardness(this.worldObj, new BlockPos(j2, k, l)) != -1))
+                    if ((block.getMaterial() != Material.AIR && !this.worldObj.isRemote && this.worldObj.isAreaLoaded(this.getPosition().add(-32, -32, -32), this.getPosition().add(32, 32, 32)) && block.getBlockHardness(this.worldObj, new BlockPos(j2, k, l)) != -1))
                     {
                     	  if (block.getMaterial().isLiquid())
                     		  this.worldObj.setBlockToAir(new BlockPos(j2, k, l));
@@ -385,9 +386,9 @@ public class EntityBlackHole extends Entity
         if (tagCompund.hasKey("direction", 9))
         {
             NBTTagList nbttaglist = tagCompund.getTagList("direction", 6);
-            this.motionX = nbttaglist.getDouble(0);
-            this.motionY = nbttaglist.getDouble(1);
-            this.motionZ = nbttaglist.getDouble(2);
+            this.motionX = nbttaglist.getDoubleAt(0);
+            this.motionY = nbttaglist.getDoubleAt(1);
+            this.motionZ = nbttaglist.getDoubleAt(2);
         }
         else
         {

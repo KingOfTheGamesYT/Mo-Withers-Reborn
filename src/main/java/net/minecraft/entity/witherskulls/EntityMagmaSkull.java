@@ -59,8 +59,8 @@ public class EntityMagmaSkull
               BlockPos blockpos = new BlockPos(movingObject.entityHit.posX, movingObject.entityHit.posY + movingObject.entityHit.getEyeHeight(), movingObject.entityHit.posZ);
               Block block = this.worldObj.getBlockState(new BlockPos(blockpos)).getBlock();
               if (block.getBlockHardness(worldObj, blockpos) != -1F && !block.isOpaqueCube()) {
-                this.worldObj.setBlockState(blockpos, Blocks.lava.getDefaultState());
-                this.worldObj.setBlockState(blockpos.up(), Blocks.flowing_lava.getDefaultState());
+                this.worldObj.setBlockState(blockpos, Blocks.LAVA.getDefaultState());
+                this.worldObj.setBlockState(blockpos.up(), Blocks.FLOWING_LAVA.getDefaultState());
                 this.worldObj.scheduleUpdate(blockpos, this.worldObj.getBlockState(blockpos).getBlock(), this.worldObj.getBlockState(blockpos).getBlock().tickRate(this.worldObj));
               }
             }
@@ -99,8 +99,8 @@ public class EntityMagmaSkull
           BlockPos blockpos = movingObject.getBlockPos().offset(movingObject.sideHit);
           Block block = this.worldObj.getBlockState(new BlockPos(blockpos)).getBlock();
           if (block.getBlockHardness(worldObj, blockpos) != -1F && !block.isOpaqueCube()) {
-            this.worldObj.setBlockState(blockpos, Blocks.lava.getDefaultState());
-            this.worldObj.setBlockState(blockpos.up(), Blocks.flowing_lava.getDefaultState());
+            this.worldObj.setBlockState(blockpos, Blocks.LAVA.getDefaultState());
+            this.worldObj.setBlockState(blockpos.up(), Blocks.FLOWING_LAVA.getDefaultState());
             this.worldObj.scheduleUpdate(blockpos, this.worldObj.getBlockState(blockpos).getBlock(), this.worldObj.getBlockState(blockpos).getBlock().tickRate(this.worldObj));
           }
         }

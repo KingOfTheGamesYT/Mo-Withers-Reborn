@@ -128,7 +128,7 @@ public class ModelWitherGirlPink
     EntityWitherGirlPink entitywither = (EntityWitherGirlPink)p_78086_1_;
     Block block1 = entitywither.worldObj.getBlockState(new BlockPos(entitywither.posX, entitywither.posY - 0.25D, entitywither.posZ)).getBlock();
     Block block2 = entitywither.worldObj.getBlockState(new BlockPos(entitywither.posX, entitywither.posY - 0.75D, entitywither.posZ)).getBlock();
-    if (!entitywither.onGround && !block1.getMaterial().isLiquid() && !block2.getMaterial().isLiquid() && (entitywither.ridingEntity == null)) {
+    if (!entitywither.onGround && !block1.getMaterial().isLiquid() && !block2.getMaterial().isLiquid() && (entitywither.getRidingEntity() == null)) {
       this.isFlying = true;
     } else {
       this.isFlying = false;

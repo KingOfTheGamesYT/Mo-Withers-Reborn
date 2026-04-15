@@ -89,7 +89,7 @@ public class EntityAirSkull extends EntityFireball
             b0 = 40;
           }
           if (b0 > 0) {
-            ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(MobEffects.wither, 20 * b0, 1));
+            ((EntityLivingBase)movingObject.entityHit).addPotionEffect(new PotionEffect(MobEffects.WITHER, 20 * b0, 1));
           }
         }
       }
@@ -183,7 +183,7 @@ public class EntityAirSkull extends EntityFireball
     this.worldObj.spawnParticle(EnumParticleTypes.EXPLOSION_NORMAL, this.posX + (this.rand.nextDouble() * 4D - 2D), this.posY + (this.rand.nextDouble() * 4D - 2D), this.posZ + (this.rand.nextDouble() * 4D - 2D), MathHelper.sin(this.prevRotationYaw * 3.1415927F / 180.0F), -this.motionY * 3.1415927F / 180.0F, -MathHelper.cos(this.prevRotationYaw * 3.1415927F / 180.0F), new int[0]);
     this.worldObj.spawnParticle(EnumParticleTypes.SMOKE_NORMAL, this.posX, this.posY + 0.5D, this.posZ, 0.0D, 0.0D, 0.0D, new int[0]);
     setPosition(this.posX, this.posY, this.posZ);
-    this.playSound(SoundEvents.entity_generic_explode, 0.2F, 2.0F);
+    this.playSound(SoundEvents.ENTITY_GENERIC_EXPLODE, 0.2F, 2.0F);
     this.noClip = true;
     if ((this.motionX * this.motionX + this.motionZ * this.motionZ == 0.0D || this.shootingEntity == null) && (!this.worldObj.isRemote)) {
       setDead();

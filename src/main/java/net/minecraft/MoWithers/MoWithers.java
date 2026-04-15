@@ -13,10 +13,9 @@ import net.minecraft.entity.wither.EntityWitherSpider;
 import net.minecraft.entity.wither.EntityWitherZombie;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.world.biome.BiomeGenBase;
-import net.minecraft.world.biome.BiomeGenHell;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraft.world.gen.structure.MapGenVillage;
+
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
@@ -28,6 +27,7 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+
 import org.apache.logging.log4j.Logger;
 
 @Mod(modid = MoWithers.MODID, name= MoWithers.MODNAME, version = MoWithers.VERSION)
@@ -48,7 +48,7 @@ public class MoWithers
     {
         @Override public Item getTabIconItem() 
         {
-            return Items.bone;
+            return Items.BONE;
         }
     };
     

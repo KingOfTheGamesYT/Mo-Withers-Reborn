@@ -3,7 +3,8 @@ package net.minecraft.entity.witherskulls;
 import net.minecraft.block.Block;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.boss.IBossDisplayData;
+import net.minecraft.entity.boss.EntityDragon;
+import net.minecraft.entity.boss.EntityWither;
 import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.monster.EntityGuardian;
 import net.minecraft.entity.wither.EntityAvatarWither;
@@ -13,6 +14,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.world.BossInfoServer;
 import net.minecraft.world.World;
 
 public class EntityIceHolder extends Entity
@@ -59,7 +61,7 @@ public class EntityIceHolder extends Entity
         this.prevPosY = this.posY;
         this.prevPosZ = this.posZ;
         
-        if ((this.ticksExisted >= 300 && this.entityToHold != null && this.entityToHold instanceof IBossDisplayData) || this.ticksExisted >= 600 || this.entityToHold == null || (this.entityToHold != null && !this.entityToHold.isEntityAlive()))
+        if ((this.ticksExisted >= 300 && this.entityToHold != null && this.entityToHold instanceof EntityDragon || this.entityToHold instanceof EntityWither) || this.ticksExisted >= 600 || this.entityToHold == null || (this.entityToHold != null && !this.entityToHold.isEntityAlive()))
         {
         	if (this.entityToHold != null)
         	{
@@ -75,8 +77,8 @@ public class EntityIceHolder extends Entity
                       int l = j1 + i2;
                       BlockPos blockpos = new BlockPos(j2, k, l);
                       Block block = this.worldObj.getBlockState(new BlockPos(blockpos)).getBlock();
-                      if (block.getBlockHardness(this.worldObj, blockpos) != -1F && !block.isOpaqueCube() && block == Blocks.ice) {
-                    	  this.worldObj.setBlockState(blockpos, Blocks.air.getDefaultState());
+                      if (block.getBlockHardness(this.worldObj, blockpos) != -1F && !block.isOpaqueCube() && block == Blocks.ICE) {
+                    	  this.worldObj.setBlockState(blockpos, Blocks.AIR.getDefaultState());
                       }
                     }
                   }
@@ -121,8 +123,8 @@ public class EntityIceHolder extends Entity
                           int l = j1 + i2;
                           BlockPos blockpos = new BlockPos(j2, k, l);
                           Block block = this.worldObj.getBlockState(new BlockPos(blockpos)).getBlock();
-                          if (block.getBlockHardness(this.worldObj, blockpos) != -1F && !block.isOpaqueCube() && block != Blocks.ice) {
-                        	  this.worldObj.setBlockState(blockpos, Blocks.ice.getDefaultState());
+                          if (block.getBlockHardness(this.worldObj, blockpos) != -1F && !block.isOpaqueCube() && block != Blocks.ICE) {
+                        	  this.worldObj.setBlockState(blockpos, Blocks.ICE.getDefaultState());
                           }
                         }
                       }

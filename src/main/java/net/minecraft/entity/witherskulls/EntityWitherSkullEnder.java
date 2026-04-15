@@ -18,8 +18,7 @@ import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class EntityWitherSkullEnder
-  extends EntityWitherSkull
+public class EntityWitherSkullEnder extends EntityWitherSkull
 {
   public EntityWitherSkullEnder(World worldIn)
   {

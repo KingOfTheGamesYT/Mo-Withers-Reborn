@@ -94,7 +94,7 @@ public class EntityLavaFlow extends Entity
     {
     	if (!this.worldObj.isRemote)
     	{
-    		this.worldObj.setBlockState(this.getPosition(), Blocks.flowing_lava.getDefaultState().withProperty(BlockLiquid.LEVEL, 12), 3);
+    		this.worldObj.setBlockState(this.getPosition(), Blocks.FLOWING_LAVA.getDefaultState().withProperty(BlockLiquid.LEVEL, 12), 3);
     	}
     	
     	if (this.shootingEntity == null || (this.shootingEntity != null && this.getDistanceSqToEntity(this.shootingEntity) > 14400D))

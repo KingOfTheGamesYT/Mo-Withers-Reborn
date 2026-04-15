@@ -65,8 +65,8 @@ public class EntityWaterSkull
               BlockPos blockpos = new BlockPos(movingObject.entityHit.posX, movingObject.entityHit.posY + movingObject.entityHit.getEyeHeight(), movingObject.entityHit.posZ);
               Block block = this.worldObj.getBlockState(new BlockPos(blockpos)).getBlock();
               if (block.getBlockHardness(worldObj, blockpos) != -1F && !block.isOpaqueCube()) {
-                this.worldObj.setBlockState(blockpos, Blocks.water.getDefaultState());
-                this.worldObj.setBlockState(blockpos.up(), Blocks.flowing_water.getDefaultState());
+                this.worldObj.setBlockState(blockpos, Blocks.WATER.getDefaultState());
+                this.worldObj.setBlockState(blockpos.up(), Blocks.FLOWING_WATER.getDefaultState());
                 this.worldObj.scheduleUpdate(blockpos, this.worldObj.getBlockState(blockpos).getBlock(), this.worldObj.getBlockState(blockpos).getBlock().tickRate(this.worldObj));
               }
             }
@@ -105,8 +105,8 @@ public class EntityWaterSkull
           BlockPos blockpos = movingObject.getBlockPos().offset(movingObject.sideHit);
           Block block = this.worldObj.getBlockState(new BlockPos(blockpos)).getBlock();
           if (block.getBlockHardness(worldObj, blockpos) != -1F && !block.isOpaqueCube()) {
-            this.worldObj.setBlockState(blockpos, Blocks.water.getDefaultState());
-            this.worldObj.setBlockState(blockpos.up(), Blocks.flowing_water.getDefaultState());
+            this.worldObj.setBlockState(blockpos, Blocks.WATER.getDefaultState());
+            this.worldObj.setBlockState(blockpos.up(), Blocks.FLOWING_WATER.getDefaultState());
             this.worldObj.scheduleUpdate(blockpos, this.worldObj.getBlockState(blockpos).getBlock(), this.worldObj.getBlockState(blockpos).getBlock().tickRate(this.worldObj));
           }
         }
